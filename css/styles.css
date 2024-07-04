@@ -52,15 +52,50 @@ body {
 }
 
 h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #333;
+  font-size: 30px;
+  font-weight: bolder;
+height: 40px;
+padding: 5px;
 }
 
 #countries-list {
+  display: flex;
+ flex-wrap: wrap;
+ gap: 20px;
+ justify-content: space-between;
+margin: 50px;
+}
+
+.imgFlag {
+  cursor: pointer;
+  width: 310px;
+  height: 220px;
+  margin-bottom: 5px;
+}
+
+li {
+  list-style: none;
+}
+
+.countryData {
+  width: 310px;
+  background-color: white;
+  padding: 8px;
+}
+
+span {
+  font-weight: bolder;
+}
+
+p {
+  margin-bottom: 5px;
+}
+/* #countries-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 
-}
-
-#imgFlag {
-  cursor: pointer;
-}
+}*/

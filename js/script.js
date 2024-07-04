@@ -1,8 +1,6 @@
 const countriesList = document.getElementById('countries-list')
 const ulList = document.getElementById('ul-list')
-const imageandcountry1 = document.getElementById('imageandcountry1')
 const imageandcountry2 = document.getElementById('imageandcountry2')
-const imgFlag = document.getElementById('imgFlag')
 
 const getCountry = async () => {
     try {
@@ -29,40 +27,45 @@ const sortCountries = (countries) => {
       const allCountries = (countries) => {
         countriesList.innerHTML = '';
       countries.forEach((country) => {
-        const {flags, name} = country;
+        const {flags, name, capital, population, car} = country;
         const template1 = `<li>
           <div class="countryData">
-          <img src='${flags[1]}' alt='${name.common}' id="imgFlag" class="imgFlag">
+          <img src='${flags[1]}' alt='${name.common}' class="imgFlag">
           <p><span>${name.common}</span></p>
+          <p><span>Capital:</span> ${capital}</p>
+              <p><span>Población:</span> ${population}</p>
+              <p><span>Lado de la carretera:</span> ${car.side}</p>
           </div>
-          <li>
+          </li>
         `   
     countriesList.innerHTML += template1;
     });
 
-      const countryInfoContainer = document.createElement('div');
-    countryInfoContainer.classList.add('country-info');
 
-
+    const imgFlags = document.querySelectorAll('.imgFlag')
+    imgFlags.forEach((imgFlag) => {
   imgFlag.addEventListener('click', () => { 
-    countryInfoContainer.innerHTML = '';
+    const countryInfoContainer = document.createElement('div');
+    countryInfoContainer.classList.add('country-info');
     countries.forEach((country) => {
-        const {flags, name, capital, population, car} = country;
+        if (country.flags[1] === imgFlag.src) {
+        const {name, capital, population, car} = country;
     const template2 = `
             <div id="countriesData">
-              <p><span>${name.common}</span></p>
-              <p><span>Capital:</span> ${capital[0]}</p>
+              <p><span>${name.official}</span></p>
+              <p><span>Capital:</span> ${capital}</p>
               <p><span>Población:</span> ${population}</p>
               <p><span>Lado de la carretera:</span> ${car.side}</p>
             </div>
-            <img src='${flags[1]}' alt='${name.common}'/>
+            <img src='${flags[1]}' alt='${name.official} class="img-Flag"/>
         `    
-countryInfoContainer.innerHTML += template2
+imageandcountry2.innerHTML = template2;
+}
     })
-    imageandcountry2.innerHTML = '';
-    imageandcountry2.appendChild(countryInfoContainer);
+    
     })
  }
+ )}
 getCountry()
 
 
