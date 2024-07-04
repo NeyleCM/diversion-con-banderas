@@ -38,7 +38,7 @@ const sortCountries = (countries) => {
           </div>
           </li>
         `   
-    countriesList.innerHTML += template1;
+    countriesList.insertAdjacentHTML('beforeend', template1);
     });
 
 
